@@ -18,7 +18,6 @@ BEGIN
 	VALUES (BookingDate, TableNumber, CustomerID);
 	-- If a booking with the same date and table number was found then rollup otherwise commit
 	IF FoundBooking <> 0 THEN
-		SELECT CONCAT("Table ", TableNumber, " is already booked - booking cancelled") AS "Booking status";
 		ROLLBACK;
 	ELSE
 		COMMIT;

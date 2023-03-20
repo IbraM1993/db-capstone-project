@@ -1,16 +1,13 @@
-DROP PROCEDURE IF EXISTS UpdateBooking;
+DROP PROCEDURE IF EXISTS CancelBooking;
 
 DELIMITER $$
 
-CREATE PROCEDURE UpdateBooking(IN BookingID INT, IN BookingDate DATE)
+CREATE PROCEDURE CancelBooking(IN BookingID INT)
 	BEGIN
-		UPDATE bookings
-		SET date = BookingDate
+		DELETE FROM bookings
         WHERE booking_id = BookingID;
-		
-		SELECT CONCAT("Booking ", BookingID, " updated") AS "Confirmation";
     END$$
 
 DELIMITER ;
 
-CALL UpdateBooking(9, "2022-12-17");
+CALL CancelBooking(9);
